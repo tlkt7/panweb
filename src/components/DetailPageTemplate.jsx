@@ -119,8 +119,10 @@ export default function DetailPageTemplate({
   heroWatermark,
   heroTitleParts,
   heroTitleLines,
+  heroTitleGradient,
   heroSubtitle,
   heroCredit,
+  heroCreditGradient,
   heroAlign = 'center',
   accentColor = '#92400e',
   items,
@@ -129,6 +131,7 @@ export default function DetailPageTemplate({
   letterNav,
 }) {
   const titleLines = heroTitleLines || [heroTitleParts];
+  const accentGradient = heroTitleGradient || `linear-gradient(90deg, ${accentColor}, ${accentColor})`;
   const itemRefs = useRef([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [visibleItems, setVisibleItems] = useState(() => (
@@ -170,20 +173,20 @@ export default function DetailPageTemplate({
   const textAlignDesktop = heroAlign === 'right' ? 'right' : heroAlign === 'center' ? 'center' : 'left';
 
   return (
-    <div style={{ width: '100%' }}>
+    <div style={{ width: '100%', '--dpt-gradient': accentGradient }}>
       <style>{`
-        .dpt-hero { position: relative; min-height: 60vh; overflow: hidden; background: linear-gradient(135deg,#e6e1da,#d3ccc2); display: flex; align-items: center; }
+        .dpt-hero { position: relative; min-height: 80vh; overflow: hidden; background: linear-gradient(135deg,#e6e1da,#d3ccc2); display: flex; align-items: center; }
         .dpt-hero-img { width: 100%; height: 100%; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
         .dpt-hero-img img { width: 60%; max-width: 480px; object-fit: contain; filter: drop-shadow(0 24px 50px rgba(0,0,0,0.18)); }
-        .dpt-hero-text { position: relative; z-index: 1; width: 100%; padding: 200px 24px 40px; text-align: center; }
+        .dpt-hero-text { position: relative; z-index: 1; width: 100%; padding: 310px 24px 40px; text-align: center; }
         .dpt-watermark { font-size: 28px; font-weight: 800; letter-spacing: 0.04em; color: rgba(120,160,160,0.28); text-transform: uppercase; margin: 0 0 4px; }
-        .dpt-hero-title { font-size: 28px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin: 0 0 14px; }
+        .dpt-hero-title { font-size: 22px; font-weight: 800; text-transform: uppercase; line-height: 1.2; margin: 0 0 14px; }
         .dpt-hero-title-line { display: block; }
-        .dpt-hero-sub { font-size: 12px; color: #6b7280; line-height: 1.7; max-width: 460px; margin: 0 auto; }
+        .dpt-hero-sub { font-size: 12px; color: #6C7C83; line-height: 1.7; max-width: 460px; margin: 0 auto; }
         .dpt-hero-credit { font-size: 12px; font-weight: 700; margin: 14px auto 0; max-width: 460px; }
         .dpt-hero-credit span:not(:last-child)::after { content: ' '; }
 
-        .dpt-body { position: relative; background: #f3f2f0; overflow: hidden; }
+        .dpt-body { position: relative; background: linear-gradient(90deg, #c7c1be, #ffffff); overflow: hidden; }
         .dpt-line-wrap { position: absolute; left: 0; top: 0; bottom: 0; width: 420px; opacity: 0.5; }
         .dpt-wrap { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 40px 24px 60px; }
 
@@ -202,12 +205,13 @@ export default function DetailPageTemplate({
         .dpt-callout-h { font-size: 12px; font-weight: 700; color: #8783c2; margin-bottom: 4px; }
         .dpt-callout-text { font-size: 12px; color: #9491c4; line-height: 1.75; margin: 0; }
         .dpt-cards { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 8px; }
-        .dpt-card { border: 1px solid #ef4444; padding: 12px 16px; }
+        .dpt-card { border: 1px solid; border-image-source: var(--dpt-gradient); border-image-slice: 1; padding: 12px 16px; }
         .dpt-card-h { font-size: 12px; font-weight: 700; color: #161616; margin-bottom: 4px; }
         .dpt-card-text { font-size: 11px; color: #4b5563; line-height: 1.6; margin: 0; }
         .dpt-letter-nav { display: flex; flex-wrap: wrap; gap: 12px; justify-content: flex-end; margin-bottom: 24px; }
         .dpt-letter-pill {
-          display: flex; flex-direction: column; align-items: center; gap: 2px; border: 1px solid #ef4444;
+          display: flex; flex-direction: column; align-items: center; gap: 2px; border: 1px solid;
+          border-image-source: var(--dpt-gradient); border-image-slice: 1;
           padding: 8px 18px; min-width: 76px; text-decoration: none;
         }
         .dpt-letter-pill-num { font-size: 18px; font-weight: 700; color: #161616; }
@@ -248,9 +252,14 @@ export default function DetailPageTemplate({
         }
 
         .dpt-phase {
-          display: inline-flex; align-items: center; border-radius: 999px; border: 1px solid;
+          display: inline-flex; align-items: center; border-radius: 999px;
+          border: 1px solid transparent;
+          background: linear-gradient(90deg, #c7c1be, #ffffff) padding-box, var(--dpt-gradient) border-box;
           padding: 4px 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
           margin: 28px 0 4px 18px;
+        }
+        .dpt-phase-label {
+          background-image: var(--dpt-gradient); -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
         .dpt-wim { margin-top: 48px; display: flex; align-items: center; gap: 24px; }
@@ -266,7 +275,7 @@ export default function DetailPageTemplate({
           .dpt-hero-img img { width: 42%; margin-left: 4%; }
           .dpt-hero-text { padding: 0 64px; text-align: ${textAlignDesktop}; ${heroAlign === 'right' ? 'margin-left: auto;' : 'margin-left: 48%;'} max-width: 600px; }
           .dpt-watermark { font-size: 52px; }
-          .dpt-hero-title { font-size: 44px; }
+          .dpt-hero-title { font-size: 34px; }
           .dpt-hero-sub { margin: 0; ${heroAlign === 'right' ? 'margin-left: auto;' : heroAlign === 'center' ? 'margin: 0 auto;' : ''} }
 
           .dpt-wrap { padding: 56px 40px 80px 460px; }
@@ -303,20 +312,36 @@ export default function DetailPageTemplate({
         </div>
         <div className="dpt-hero-text">
           {heroWatermark && <div className="dpt-watermark">{heroWatermark}</div>}
-          <h1 className="dpt-hero-title">
+          <h1
+            className="dpt-hero-title"
+            style={heroTitleGradient ? {
+              backgroundImage: heroTitleGradient,
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              color: 'transparent',
+            } : undefined}
+          >
             {titleLines.map((line, li) => (
               <span key={li} className="dpt-hero-title-line">
                 {line.map((part, i) => (
-                  <span key={i} style={{ color: part.color }}>{part.text}</span>
+                  <span key={i} style={heroTitleGradient ? undefined : { color: part.color }}>{part.text}</span>
                 ))}
               </span>
             ))}
           </h1>
           <p className="dpt-hero-sub">{heroSubtitle}</p>
           {heroCredit && (
-            <p className="dpt-hero-credit">
+            <p
+              className="dpt-hero-credit"
+              style={heroCreditGradient ? {
+                backgroundImage: heroCreditGradient,
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent',
+              } : undefined}
+            >
               {heroCredit.map((part, i) => (
-                <span key={i} style={{ color: part.color }}>{part.text}</span>
+                <span key={i} style={heroCreditGradient ? undefined : { color: part.color }}>{part.text}</span>
               ))}
             </p>
           )}
@@ -359,8 +384,8 @@ export default function DetailPageTemplate({
           {items.map((item, i) => (
             <Fragment key={item.num}>
               {item.phase && item.phase.label !== items[i - 1]?.phase?.label && (
-                <div className="dpt-phase" style={{ borderColor: item.phase.color, color: item.phase.color }}>
-                  {item.phase.label}
+                <div className="dpt-phase">
+                  <span className="dpt-phase-label">{item.phase.label}</span>
                 </div>
               )}
               <Item

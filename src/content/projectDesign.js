@@ -3,13 +3,14 @@ const PHASE_2 = { label: 'ЭТАП II', color: '#a78bfa' };
 const PHASE_3 = { label: 'ЭТАП III', color: '#fb923c' };
 
 export const projectDesignContent = {
-  heroImage: '/images/hero-mineral-galena.png',
+  heroImage: '/images/Stones/47857-97-Photoroom.png',
   heroTitleLines: [
     [{ text: 'ПРОЕКТИРОВАНИЕ И', color: '#7a2e2e' }],
     [{ text: 'РАБОЧАЯ ДОКУМЕНТАЦИЯ', color: '#3b3f8c' }],
   ],
+  heroTitleGradient: 'linear-gradient(90deg, #683008, rgba(1,41,213,0.23))',
   heroSubtitle: 'Превращаем технические решения в полный комплект проектно-сметной документации — от концептуальных схем до рабочих чертежей, готовых к строительству и прохождению государственной экспертизы',
-  heroAlign: 'center',
+  heroAlign: 'left',
   accentColor: '#1d4ed8',
 
   overviewButton: { label: 'ОБЗОР ПРОЕКТОВ', path: '/experience' },

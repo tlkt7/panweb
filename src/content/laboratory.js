@@ -1,10 +1,11 @@
 export const laboratoryContent = {
-  heroImage: '/images/hero-mineral-vivianite.png',
+  heroImage: '/images/Stones/ChatGPT Image 12 мая 2026 г., 14_30_12.png',
   heroTitleLines: [
     [{ text: 'АНАЛИТИЧЕСКАЯ ЛАБОРАТОРИЯ', color: '#6b6b3a' }],
     [{ text: 'И ПРОМЫШЛЕННЫЕ', color: '#3b5d7a' }],
     [{ text: 'ИСПЫТАНИЯ', color: '#5b9bd5' }],
   ],
+  heroTitleGradient: 'linear-gradient(90deg, #a28a5a, #4685c4, #3a546b)',
   heroSubtitle: 'Единый исследовательский комплекс, обеспечивающий полный цикл изучения минерального сырья — от отбора и анализа керна до получения технологического регламента промышленного масштаба, готового к проектированию ГОКа',
   heroCredit: [
     { text: 'Филиал', color: '#2563eb' },
@@ -13,6 +14,7 @@ export const laboratoryContent = {
     { text: 'ГНПОПЭ', color: '#15803d' },
     { text: '«Казмеханобр»', color: '#c2680c' },
   ],
+  heroCreditGradient: 'linear-gradient(90deg, #3a206d, #ff724d)',
   heroAlign: 'left',
   accentColor: '#5a64b8',
 

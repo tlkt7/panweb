@@ -45,24 +45,6 @@ function ServicesCarousel() {
 
   return (
     <>
-      <div className="svc-pillrow">
-        {services.map((svc, i) => (
-          <button
-            key={svc.path}
-            type="button"
-            className="svc-pill"
-            style={{
-              borderColor: svc.borderColor,
-              background: active === i ? svc.borderColor : 'transparent',
-              color: active === i ? '#fff' : svc.borderColor,
-            }}
-            onClick={() => scrollToIndex(i)}
-          >
-            {homeContent.services[svc.id]}
-          </button>
-        ))}
-      </div>
-
       <div className="svc-carousel">
         <button type="button" className="svc-arrow" onClick={() => step(-1)} disabled={active === 0} aria-label="prev">
           <svg width="9" height="16" viewBox="0 0 9 16" fill="none"><path d="M8 1L1 8l7 7" stroke="currentColor" strokeWidth="1.5" /></svg>
@@ -113,45 +95,51 @@ export default function HomeIntro() {
     <div style={{ width: '100%' }}>
       <style>{`
         .home-hero {
-          position: relative; min-height: 100svh; overflow: hidden;
-          display: flex; align-items: flex-end;
+          position: relative; min-height: 78svh; overflow: hidden;
+          display: flex; align-items: flex-start;
           background: linear-gradient(180deg, #c8c0b8 0%, #d4cdc5 40%, #e0d9d1 100%);
         }
         .home-hero-bg {
-          position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%;
-          opacity: 0.7;
+          position: absolute; left: 0; bottom: 0; width: 100%; height: auto;
+          display: block; opacity: 0.85;
+        }
+        .home-hero-reflection {
+          position: relative; width: 100%; line-height: 0;
+          background: linear-gradient(180deg,#d8d0c8 0%,#e8e2db 100%);
+        }
+        .home-hero-reflection img {
+          display: block; width: 100%; height: auto;
         }
         .home-hero-text {
           position: relative; z-index: 1;
-          padding: 0 24px 60px; width: 100%;
+          padding: 33vh 24px 0; width: 100%;
         }
-        .home-hero-h1 { font-size: 26px; font-weight: 800; line-height: 1.15; text-transform: uppercase; margin: 0 0 14px; }
-        .home-hero-h1 .c1 { color: #3b1f6e; }
-        .home-hero-h1 .c2 { color: #c75a1a; }
-        .home-hero-sub { font-size: 12px; color: #4a3728; line-height: 1.7; margin-bottom: 24px; max-width: 540px; }
+        .home-hero-h1 {
+          font-size: 15px; font-weight: 800; line-height: 1.18; text-transform: uppercase; margin: 0 0 14px;
+          background-image: linear-gradient(90deg, #3a206d, #ff724d);
+          -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
+        .home-hero-h1-line { display: block; }
+        .home-hero-sub {
+          font-size: 12px; line-height: 1.7; margin-bottom: 24px; max-width: 540px;
+          background-image: linear-gradient(90deg, #3a206d, #ff724d);
+          -webkit-background-clip: text; background-clip: text; color: transparent;
+        }
         .home-cta {
           display: inline-flex; align-items: center; gap: 10px;
-          border: 1px solid #c75a1a; padding: 10px 20px;
+          border: 1px solid #ff724d; padding: 10px 20px;
           font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
-          text-transform: uppercase; color: #c75a1a; text-decoration: none;
+          text-transform: uppercase; color: #ff724d; text-decoration: none;
           background: transparent; cursor: pointer;
+        }
+        .home-cta-label {
+          background-image: linear-gradient(90deg, #3a206d, #ff724d);
+          -webkit-background-clip: text; background-clip: text; color: transparent;
         }
 
         /* Services section */
         .home-cards { background: linear-gradient(180deg,#d8d0c8 0%,#e8e2db 100%); padding: 48px 0 60px; }
         .home-cards-inner { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-
-        .svc-pillrow {
-          display: flex; gap: 8px; overflow-x: auto; margin-bottom: 24px;
-          padding-bottom: 4px; scrollbar-width: none;
-        }
-        .svc-pillrow::-webkit-scrollbar { display: none; }
-        .svc-pill {
-          flex-shrink: 0; border: 1.5px solid; border-radius: 999px;
-          padding: 8px 16px; font-size: 9px; font-weight: 700; letter-spacing: 0.04em;
-          text-transform: uppercase; white-space: nowrap; cursor: pointer;
-          transition: background 0.2s, color 0.2s;
-        }
 
         .svc-carousel { display: flex; align-items: center; gap: 10px; }
         .svc-track {
@@ -184,38 +172,41 @@ export default function HomeIntro() {
         .svc-dot.is-active { background: #c75a1a; width: 20px; border-radius: 4px; }
 
         @media(min-width:768px) {
-          .home-hero-text { padding: 0 60px 80px; max-width: 700px; }
-          .home-hero-h1 { font-size: 42px; }
+          .home-hero-text { padding: 31vh 60px 0; max-width: 820px; }
+          .home-hero-h1 { font-size: 32px; }
           .home-cards-inner { padding: 0 40px; }
-          .svc-pill { font-size: 11px; padding: 10px 20px; }
           .svc-card { flex: 0 0 calc((100% - 2 * 20px) / 3); }
           .svc-track { gap: 20px; }
         }
         @media(min-width:1200px) {
-          .home-hero-h1 { font-size: 52px; }
+          .home-hero-h1 { font-size: 38px; }
           .svc-card { flex: 0 0 calc((100% - 3 * 20px) / 4); }
         }
       `}</style>
 
       {/* Hero */}
       <section className="home-hero">
-        <img src="/images/hero-landscape-desert.jpg" className="home-hero-bg" alt="Landscape" />
+        <img src="/images/Hero/559757 (1).png" className="home-hero-bg" alt="Landscape" />
         <div className="home-hero-text">
           <h1 className="home-hero-h1">
-            <span className="c1">{homeContent.hero.titlePart1}</span>
-            <span className="c2">{homeContent.hero.titlePart2}</span>
-            <span className="c1">{homeContent.hero.titlePart3}</span>
-            <span className="c2">{homeContent.hero.titlePart4}</span>
+            {homeContent.hero.titleLines.map((line, i) => (
+              <span key={i} className="home-hero-h1-line">{line}</span>
+            ))}
           </h1>
           <p className="home-hero-sub">{homeContent.hero.subtitle}</p>
           <Link to="/resource-evaluation" className="home-cta">
-            {homeContent.hero.cta}
+            <span className="home-cta-label">{homeContent.hero.cta}</span>
             <svg width="24" height="10" viewBox="0 0 24 10" fill="none">
               <path d="M0 5h22M17 1l5 4-5 4" stroke="currentColor" strokeWidth="1.5"/>
             </svg>
           </Link>
         </div>
       </section>
+
+      {/* Reflection of hero background, mirrored */}
+      <div className="home-hero-reflection">
+        <img src="/images/Hero/559757 (1) copy.png" alt="" aria-hidden="true" />
+      </div>
 
       {/* Services carousel */}
       <section className="home-cards">

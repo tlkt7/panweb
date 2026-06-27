@@ -5,13 +5,14 @@ const PHASE_3B = { label: 'ЭТАП III-Б', color: '#2dd4bf' };
 const PHASE_4 = { label: 'ЭТАП IV', color: '#f0738a' };
 
 export const environmentalContent = {
-  heroImage: '/images/hero-mineral-moss-rock.png',
+  heroImage: '/images/Stones/mossy-rock-with-transparent-background_891313-38-Photoroom.png',
   heroTitleParts: [
     { text: 'ЭКОЛОГИЧЕСКИЕ ', color: '#6b7280' },
     { text: 'РАБОТЫ', color: '#16a34a' },
   ],
+  heroTitleGradient: 'linear-gradient(90deg, #847e72, #72ad05, #174900)',
   heroSubtitle: 'Комплексное экологическое сопровождение горнорудных проектов — от скрининга и ОВОС до Комплексного экологического разрешения и устойчивого запуска предприятия',
-  heroAlign: 'center',
+  heroAlign: 'left',
   accentColor: '#15803d',
 
   items: [

@@ -1,12 +1,12 @@
 export const resourceEvaluationContent = {
-  heroImage: '/images/hero-mineral-malachite.png',
-  heroWatermark: 'RESOURCE EVALUATION',
+  heroImage: '/images/Stones/64389fe972fa27f845f4deb9bea108b5-Photoroom.png',
   heroTitleParts: [
     { text: 'ОЦЕНКА ', color: '#7a2e2e' },
     { text: 'РЕСУРСОВ', color: '#14b8a6' },
   ],
+  heroTitleGradient: 'linear-gradient(90deg, #471004, #08c5d1)',
   heroSubtitle: 'На основе керна, опробования и геофизики строим геологическую модель месторождения и разрабатываем программу разведочных работ с обоснованием бурения, QA/QC и бюджета — готовую для согласования с инвесторами и регуляторами ГКЗ РК, KAZRC, JORC',
-  heroAlign: 'right',
+  heroAlign: 'left',
   accentColor: '#92400e',
 
   items: [

@@ -34,7 +34,7 @@ export default function About() {
           height: 170px;
           background: linear-gradient(100deg, #c8c0b8 0%, #d9d3cb 45%, #f3f1ee 100%);
         }
-        .about-body { position: relative; background: #f3f2f0; overflow: hidden; }
+        .about-body { position: relative; background: linear-gradient(90deg, #c7c1be, #ffffff); overflow: hidden; }
         .about-wrap { position: relative; z-index: 1; max-width: 1320px; margin: 0 auto; padding: 56px 24px 80px; }
 
         .about-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #2563eb; margin-bottom: 16px; }

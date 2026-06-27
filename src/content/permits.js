@@ -1,6 +1,7 @@
 export const permitsContent = {
-  heroImage: '/images/hero-mineral-copper.png',
+  heroImage: '/images/Stones/copper-ore-with-transparant-background_891313-132-Photoroom.png',
   heroTitleParts: [{ text: 'РАЗРЕШЕНИЯ И ГОСЭКСПЕРТИЗА', color: '#9a2f2f' }],
+  heroTitleGradient: 'linear-gradient(90deg, #3a3f47, rgba(182,0,0,0.23))',
   heroSubtitle: 'Полное сопровождение согласований, разрешений и государственной экспертизы — от сбора исходных данных до утверждения проекта и получения разрешения на строительство',
   heroAlign: 'left',
   accentColor: '#9a2f2f',

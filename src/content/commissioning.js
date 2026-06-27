@@ -1,6 +1,7 @@
 export const commissioningContent = {
-  heroImage: '/images/hero-mineral-gold.png',
+  heroImage: '/images/Stones/Covellite-USA-Photoroom.png',
   heroTitleParts: [{ text: 'EPCM-УПРАВЛЕНИЕ', color: '#312e81' }],
+  heroTitleGradient: 'linear-gradient(90deg, #000000, #3533cd)',
   heroSubtitle: 'Выступаем единым техническим управляющим проекта на всех стадиях: от инженерных изысканий и проектирования до закупок, строительного контроля и запуска объекта. Заказчик взаимодействует с одной командой и получает полную прозрачность проекта в реальном времени.',
   heroAlign: 'left',
   accentColor: '#4338ca',

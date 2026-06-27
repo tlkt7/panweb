@@ -1,24 +1,6 @@
 import { Link } from 'react-router-dom';
 import { footerContent } from '../content/footer';
 
-const columns = [
-  [{ key: 'resourceEvaluation', path: '/resource-evaluation' }],
-  [{ key: 'laboratory', path: '/laboratory' }],
-  [{ key: 'minePlanning', path: '/mine-planning' }],
-  [{ key: 'environmental', path: '/environmental' }],
-  [
-    { key: 'expertise', path: '/permits' },
-    { key: 'licensing', path: '/permits' },
-    { key: 'projectDesign', path: '/project-design' },
-  ],
-  [
-    { key: 'construction', path: '/commissioning' },
-    { key: 'procurement', path: '/commissioning' },
-    { key: 'startup', path: '/commissioning' },
-  ],
-  [{ key: 'commissioning', path: '/commissioning' }],
-];
-
 export default function Footer() {
   return (
     <footer className="ftr">
@@ -26,20 +8,16 @@ export default function Footer() {
         .ftr { background: #23232f; color: #fff; padding-top: 48px; }
         .ftr-inner { max-width: 1440px; margin: 0 auto; padding: 0 24px; }
 
-        .ftr-grid { display: grid; grid-template-columns: 1fr; gap: 32px; margin-bottom: 40px; }
-        .ftr-brand-name { font-size: 16px; font-weight: 800; letter-spacing: 0.1em; }
-        .ftr-brand-tag { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 8px; max-width: 220px; }
+        .ftr-grid { display: flex; flex-direction: column; gap: 32px; margin-bottom: 40px; }
+        .ftr-brand-name { height: 64px; width: auto; object-fit: contain; filter: brightness(0) invert(1); }
+        .ftr-brand-tag { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.6; margin-top: 8px; max-width: 260px; }
 
-        .ftr-col-group { display: flex; flex-direction: column; gap: 24px; }
-        .ftr-sub h4 {
-          font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-          color: #fff; margin: 0 0 12px; display: inline-block; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.4);
-          text-underline-offset: 4px;
+        .ftr-pages { display: grid; grid-template-columns: repeat(2, auto); gap: 14px 28px; }
+        .ftr-pages a {
+          font-size: 12px; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase;
+          color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s;
         }
-        .ftr-sub a.ftr-sub-h { color: #fff; text-decoration: none; }
-        .ftr-sub ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
-        .ftr-sub a { font-size: 12px; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.15s; }
-        .ftr-sub a:hover { color: rgba(255,255,255,0.9); }
+        .ftr-pages a:hover { color: #fff; }
 
         .ftr-bottom {
           border-top: 1px solid rgba(255,255,255,0.12);
@@ -51,39 +29,27 @@ export default function Footer() {
         .ftr-bottom-links a { font-size: 12px; color: rgba(255,255,255,0.6); text-decoration: none; }
         .ftr-bottom-links a:hover { color: #fff; }
 
-        @media(min-width: 640px) {
-          .ftr-grid { grid-template-columns: repeat(2, 1fr); }
-        }
         @media(min-width: 1024px) {
           .ftr-inner { padding: 0 40px; }
-          .ftr-grid { grid-template-columns: 1.1fr repeat(7, 1fr); gap: 20px; }
+          .ftr-grid { flex-direction: row; align-items: center; gap: 80px; }
+          .ftr-pages { grid-template-columns: repeat(5, auto); max-width: 640px; }
         }
       `}</style>
 
       <div className="ftr-inner">
         <div className="ftr-grid">
           <div>
-            <div className="ftr-brand-name">{footerContent.brand.name}</div>
-            <div className="ftr-brand-tag">{footerContent.brand.tagline}</div>
+            <img className="ftr-brand-name" src="/images/Logo/ChatGPT Image 11 мая 2026 г., 14_49_17 (1).png" alt={footerContent.brand.name} />
+            <div className="ftr-brand-tag">
+              {footerContent.brand.taglineLines.map((line, i) => <div key={i}>{line}</div>)}
+            </div>
           </div>
 
-          {columns.map((group, gi) => (
-            <div key={gi} className="ftr-col-group">
-              {group.map(({ key, path }) => {
-                const col = footerContent.columns[key];
-                return (
-                  <div key={key} className="ftr-sub">
-                    <Link to={path} className="ftr-sub-h"><h4>{col.heading}</h4></Link>
-                    <ul>
-                      {col.links.map((link) => (
-                        <li key={link}><Link to={path}>{link}</Link></li>
-                      ))}
-                    </ul>
-                  </div>
-                );
-              })}
-            </div>
-          ))}
+          <nav className="ftr-pages">
+            {footerContent.pages.map((page) => (
+              <Link key={page.path} to={page.path}>{page.label}</Link>
+            ))}
+          </nav>
         </div>
 
         <div className="ftr-bottom">

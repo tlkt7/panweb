@@ -16,7 +16,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <main style={{ paddingTop: 52 }}>
+      <main style={{ paddingTop: 72 }}>
         <Routes>
           <Route path="/"                    element={<Home />} />
           <Route path="/about"               element={<About />} />

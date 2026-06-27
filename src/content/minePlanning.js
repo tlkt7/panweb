@@ -1,9 +1,10 @@
 export const minePlanningContent = {
-  heroImage: '/images/hero-mineral-pyrite.png',
+  heroImage: '/images/Stones/CH1229f-Photoroom.png',
   heroTitleParts: [
     { text: 'ПЛАН ', color: '#a9863c' },
     { text: 'ГОРНЫХ РАБОТ', color: '#5b7290' },
   ],
+  heroTitleGradient: 'linear-gradient(90deg, #645330, #419eff, #007dff)',
   heroSubtitle: 'На основе геологической модели и утверждённых запасов проектируем карьер или шахту: оптимизация контуров, геомеханика, БВР и полный комплект ПГР — готовый к лицензированию',
   heroAlign: 'left',
   accentColor: '#3b4f8c',
