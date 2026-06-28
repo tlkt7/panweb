@@ -239,7 +239,7 @@ export default function HomeIntro() {
 
         {/* Reflection of hero background, mirrored */}
         <div className="home-hero-reflection">
-          <img src="/images/Hero/559757 reverse.png" alt="" aria-hidden="true" />
+          <img src="/images/Hero/559 (1) reverse.png" alt="" aria-hidden="true" />
         </div>
 
         <div style={{
